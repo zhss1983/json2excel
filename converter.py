@@ -181,7 +181,7 @@ class WorksheetWriter:
                 f_second = 0
 
             second = int(f_second)
-            microsecond = int(100000 * (f_second - second))
+            microsecond = int(1e6 * (f_second - second))
 
             try:
                 tz_hour = int(match.group("tz_hour"))
