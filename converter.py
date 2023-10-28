@@ -113,7 +113,7 @@ class WorksheetWriter:
                 "deep": analizer.max_deep,
                 "names": {
                     tuple(name.split("_")): number
-                    for number, name in enumerate(sorted(analizer.names))
+                    for number, name in enumerate(analizer.names)
                 },
             }
 
