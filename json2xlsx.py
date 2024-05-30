@@ -3,8 +3,8 @@ import os
 from support import load_json_data
 from converter import WorksheetWriter
 
-input_json_file_name = "./test.json"
-output_xlsx_file_name = "./test.xlsx"
+input_json_file_name = "./output.json"
+output_xlsx_file_name = "./output.xlsx"
 
 if not os.path.exists(input_json_file_name):
     raise FileExistsError(f"Не найден файл: {input_json_file_name}")

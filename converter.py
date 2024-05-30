@@ -3,6 +3,8 @@ import xlsxwriter
 
 from datetime import datetime, timedelta
 
+SPLIT_CHAR = chr(27)
+
 
 class JsonStructureAnalizer:
     def __init__(self):
@@ -24,7 +26,7 @@ class JsonStructureAnalizer:
         # Если есть хотя бы одна запись не являющаяся списком или словарём в этом словаре, значит будет существовать
         # колонка с соответствующим именем.
         for key, value in rec.items():
-            new_name = f"{name}_{key}".strip("_") if name else key
+            new_name = f"{name}{SPLIT_CHAR}{key}".strip(SPLIT_CHAR) if name else key
 
             if isinstance(value, dict):
                 self.__get_rows_and_names_from_dict(value, new_name, deep)
@@ -112,7 +114,7 @@ class WorksheetWriter:
                 "cols": len(analizer.names),
                 "deep": analizer.max_deep,
                 "names": {
-                    tuple(name.split("_")): number
+                    tuple(name.split(SPLIT_CHAR)): number
                     for number, name in enumerate(analizer.names)
                 },
             }
